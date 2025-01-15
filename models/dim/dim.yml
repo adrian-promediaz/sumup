@@ -1,0 +1,33 @@
+version: 2
+
+sources:
+  - name: sheet
+    database: sumup_source
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+    schema: sheet
+    tables:
+      - name: device
+        description: A table containing the id of the devices with their type and their stores
+      - name: store
+        description: This table contains the information of the Stores belong to customers
+
+models:
+  - name: dim_devices
+    description: A table containing the id of the devices with their type and their stores
+    columns:
+      - name: id
+        description: The primary key for this table
+        tests:
+          - unique
+          - not_null
+  - name: dim_stores
+    description: This table contains the information of the Stores belong to customers
+    columns:
+      - name: id
+        description: The primary key for this table
+        tests:
+          - unique
+          - not_null

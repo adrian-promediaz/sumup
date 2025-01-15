@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: int_transaction_store_device
+    description:
+      "An intermediate table combininig the transactions, devices, and stores table"
+    columns:
+      - name: transaction_id
+        description: The primary key for this table
+        tests:
+          - unique
+          - not_null
