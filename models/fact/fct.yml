@@ -1,0 +1,26 @@
+version: 2
+
+sources:
+  - name: sheet
+    database: sumup_source
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+    schema: sheet
+    tables:
+      - name: transaction
+        description: transaction
+
+models:
+  - name: fct_transactions
+    description:
+      "A fact table of containing all transactions with the following assumption:
+       A payment made using the provided devices, currently our devices only handle payments made by card and in euros. 
+      Those transactions are made to pay for products sold inside the store, each product has a name and a SKU (stock keeping unit) which is unique."
+    columns:
+      - name: id
+        description: The primary key for this table
+        tests:
+          - unique
+          - not_null
