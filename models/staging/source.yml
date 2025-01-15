@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: sheet
+    database: sumup_source
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+    schema: sheet
+    tables:
+      - name: device
+        description: device
+      - name: store
+        description: store
+      - name: transaction
+        description: transaction
