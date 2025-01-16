@@ -18,7 +18,7 @@ source_and_transformed as (
     -- We remove the card number and CVV as they are personally identifiable information (PII) and will not be used in any downstream tables.
     -- The product stock-keeping unit (SKU) of the product is assumed to contain only numerical values.
         * exclude (card_number, cvv, product_sku),
-        regexp_replace(product_sku, '[^\\d]*', '') as product_sku
+        regexp_replace(product_sku, '[^\\d]*', '')::numeric as product_sku
     from {{ source('sheet', 'transaction') }}
 
 )
@@ -26,7 +26,6 @@ source_and_transformed as (
 select * from source_and_transformed
 
 {% if is_incremental() %}
-
 
 -- this filter will only be applied on an incremental run
 -- (uses >= to include records arriving later on the same day as the last run of this model)
