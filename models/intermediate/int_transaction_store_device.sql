@@ -48,7 +48,6 @@ final as (
 
 select * from final
 
-
 {% if is_incremental() %}
 
 
