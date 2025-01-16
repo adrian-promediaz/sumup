@@ -10,24 +10,42 @@ sources:
     schema: sheet
     tables:
       - name: device
-        description: A table containing the id of the devices with their type and their stores
+        description: "A table containing the IDs of devices, their types, and associated stores."
       - name: store
-        description: This table contains the information of the Stores belong to customers
+        description: "This table contains information about stores that belong to customers."
 
 models:
   - name: dim_devices
     description: A table containing the id of the devices with their type and their stores
     columns:
       - name: id
-        description: The primary key for this table
+        description: "The primary key of the table."
         tests:
           - unique
           - not_null
+      - name: type
+        description: "The identifier for the device type."
+      - name: store_id
+        description: "The identifier for the store where this device type is available. This serves as a foreign key to join with the store table."
   - name: dim_stores
     description: This table contains the information of the Stores belong to customers
     columns:
       - name: id
-        description: The primary key for this table
+        description: "The primary key of the table."
         tests:
           - unique
           - not_null
+      - name: name
+        description: "The name of the store."
+      - name: address
+        description: "The full address of the store."
+      - name: city
+        description: "The city where the store is located."
+      - name: country
+        description: "The country where the store is located."
+      - name: created_at
+        description: "The timestamp indicating when the record was created."
+      - name: typology
+        description: "The category or classification of the store."
+      - name: customer_id
+        description: "The unique identifier of the customer who owns the store."

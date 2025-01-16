@@ -10,17 +10,80 @@ sources:
     schema: sheet
     tables:
       - name: transaction
-        description: transaction
+        description: "A table containing all transactions with the following assumptions:
+          Payments are made using the provided devices, which currently only support card payments in euros. 
+          These transactions are made to pay for products sold inside the store. Each product has a name and a unique SKU (stock keeping unit)."
 
 models:
   - name: fct_transactions
-    description:
-      "A fact table of containing all transactions with the following assumption:
-       A payment made using the provided devices, currently our devices only handle payments made by card and in euros. 
-      Those transactions are made to pay for products sold inside the store, each product has a name and a SKU (stock keeping unit) which is unique."
+    description: "A fact table containing all transactions with the following assumptions:
+      Payments are made using the provided devices, which currently only support card payments in euros.
+      These transactions are made to pay for products sold inside the store. Each product has a name and a unique SKU (stock keeping unit)."
     columns:
       - name: id
-        description: The primary key for this table
+        description: "The primary key of the table."
         tests:
           - unique
           - not_null
+      - name: device_id
+        description: "The ID of the device used by the buyer in the transaction. This serves as a foreign key to join with the device table."
+      - name: product_name
+        description: "The name of the product purchased in the transaction."
+      - name: product_sku
+        description: "The stock-keeping unit (SKU) of the product."
+      - name: category_name
+        description: "The category of the product purchased in the transaction."
+      - name: amount
+        description: "The amount of the transaction, in Euros."
+      - name: status
+        description: "The status of the transaction, with the following details:
+                    - *cancelled*: The transaction was cancelled.
+                    - *refused*: The transaction was refused.
+                    - *accepted*: The transaction was successful."
+      - name: created_at
+        description: "The timestamp indicating when the record was created."
+      - name: happened_at
+        description: "The timestamp indicating when the transaction occurred."
+  
+  - name: fct_avg_first_5_transaction_time_per_store
+    description: "A fact table showing the average time for a store to perform its first 5 transactions."
+
+  - name: fct_avg_transaction_amount_per_typology_and_country
+    description: "A fact table showing the average transacted amount per store typology and country."
+    columns:
+      - name: store_country
+        description: "The country where the store is located."
+      - name: store_typology
+        description: "The category or classification of the store."
+      - name: transaction_amount
+        description: "The amount of the transaction, in Euros."
+
+  - name: fct_top_10_products_sold
+    description: "A fact table showing the top 10 products sold."
+    columns:
+    - name: product_sku
+      description: "The stock-keeping unit (SKU) of the product. It is assumed to contain only numerical values."
+    - name: transaction_amount
+      description: "The amount of the transaction, in Euros."
+  
+  - name: fct_top_10_stores_per_transacted_amount
+    description: "A fact table showing the top 10 stores by transacted amount."
+    columns:
+    - name: store_id
+      description: "The identifier for the store where this device type is available. This serves as a foreign key to join with the store table."
+    - name: store_name
+      description: "The name of the store."
+    - name: transaction_amount
+      description: "The amount of the transaction, in Euros."
+  
+  - name: fct_transaction_per_device_type
+    description: "A fact table showing the percentage of transactions per device type."
+    columns:
+    - name: device_type
+      description: "The type of device used in the transaction."
+    - name: transaction_amount
+      description: "The amount of the transaction, in Euros."
+    - name: percentage_transaction
+      description: "Percentage of transactions per device type."
+
+    

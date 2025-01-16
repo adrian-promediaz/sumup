@@ -2,11 +2,35 @@ version: 2
 
 models:
   - name: int_transaction_store_device
-    description:
-      "An intermediate table combininig the transactions, devices, and stores table"
+    description: "An intermediate table that combines the transactions, devices, and stores tables."
     columns:
       - name: transaction_id
-        description: The primary key for this table
+        description: "The primary key of the table. This identifier refers to a transaction, derived from the transactions table."
         tests:
           - unique
           - not_null
+      - name: transaction_amount
+        description: "The amount of the transaction, in Euros."
+      - name: transaction_status
+        description: "The status of the transaction, with the following details:
+                    - *cancelled*: The transaction was cancelled.
+                    - *refused*: The transaction was refused.
+                    - *accepted*: The transaction was successful."
+      - name: transaction_created_at
+        description: "The timestamp indicating when the record was created in the transactions table."
+      - name: transaction_happened_at
+        description: "The timestamp indicating when the transaction occurred."
+      - name: product_name
+        description: "The name of the product purchased in the transaction."
+      - name: product_sku
+        description: "The stock-keeping unit (SKU) of the product. It is assumed to contain only numerical values."
+      - name: store_country
+        description: "The country where the store is located."
+      - name: store_typology
+        description: "The category or classification of the store."
+      - name: device_type
+        description: "The type of device used in the transaction."
+      - name: store_id
+        description: "The identifier for the store where this device type is available. This serves as a foreign key to join with the store table."
+      - name: store_name
+        description: "The name of the store."

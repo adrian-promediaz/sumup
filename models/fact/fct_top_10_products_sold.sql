@@ -15,11 +15,11 @@ intermediate as (
 sum_accepted_transaction as (
 
     select 
-        product_name,
+        product_sku,
         sum(transaction_amount) as transaction_amount
     from intermediate
     group by
-        product_name
+        product_sku
 
 ),
 
