@@ -4,12 +4,7 @@
 with
 
 intermediate as (
-
-    select * from {{ ref('int_transaction_store_device') }}
-    where 
-        -- We only focuses on the accepted transaction
-        transaction_status = 'accepted'
-
+    select * from {{ ref('int_accepted_transaction_store_device') }}
 ),
 
 avg_accepted_transaction as (

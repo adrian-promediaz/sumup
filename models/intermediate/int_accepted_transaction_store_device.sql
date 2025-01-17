@@ -11,6 +11,9 @@ with
 
 transactions as (
     select * from {{ ref("fct_transactions") }}
+    where 
+        -- We only focuses on the accepted transaction
+        status = 'accepted'
 ),
 
 devices as (

@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: int_transaction_store_device
+  - name: int_accepted_transaction_store_device
     description: "An intermediate table that combines the transactions, devices, and stores tables."
     columns:
       - name: transaction_id
