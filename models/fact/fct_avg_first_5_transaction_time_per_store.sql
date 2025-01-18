@@ -1,4 +1,7 @@
-{{ config(schema="fact", materialized="table") }}
+{{ config(
+    schema="mart_stores", 
+    materialized="table")
+}}
 
 
 with
@@ -40,8 +43,7 @@ first_and_fifth_transactions as (
 final as (
 
     select
-        avg(day_diff_first_five_transaction)
-            as avg_day_diff_first_five_transaction
+        avg(day_diff_first_five_transaction) as avg_day_diff_first_five_transaction
     from first_and_fifth_transactions
     where
     -- Removing records with null values.

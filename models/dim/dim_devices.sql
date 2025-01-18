@@ -1,7 +1,7 @@
--- This table contains the information of the Devices
+-- A table containing the IDs of devices, their types, and associated stores.
 {{ config(
-    schema='dim',
-    materialized='table')
+    schema="mart_devices",
+    materialized="table")
 }}
 
 with

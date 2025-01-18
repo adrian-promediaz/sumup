@@ -1,8 +1,8 @@
 {{ config(
-       materialized='incremental',
-       schema='intermediate',
-       incremental_strategy='merge',
-       unique_key = 'transaction_id'
+       materialized="incremental",
+       schema="intermediate",
+       incremental_strategy="merge",
+       unique_key = "transaction_id"
    )
 }}
 

@@ -1,4 +1,7 @@
-{{ config(schema="fact", materialized="table") }}
+{{
+    config(schema="mart_stores", 
+    materialized="table")
+}}
 
 
 with
