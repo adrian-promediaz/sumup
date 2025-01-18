@@ -19,7 +19,7 @@
 
 1. Top 10 stores per transacted amount: fct_top_10_stores_per_transacted_amount.sql
 2. Top 10 products sold: fct_top_10_products_sold.sql
-3. Average transaction amount per store typology and country: fct_avg_transaction_amount_per_typology_and_country.sql
+3. Average transaction amount per store typology and country: fct_avg_transaction_amount_per_store_typology_and_country.sql
 4. Percentage of transactions per device type: fct_transaction_per_device_type.sql
 5. Average time for a store to perform its first 5 transactions: fct_avg_first_5_transaction_time_per_store.sql
 
