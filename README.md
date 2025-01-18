@@ -1,4 +1,4 @@
-# Assumptions
+# Assumptions and Implementation Details
 
 1. The raw tables, including `store.csv`, `device.csv`, and `transaction.csv`, are stored under the `SUMUP_SOURCE` database and `SHEET` schema.
 2. I created the dim_stores and dim_devices tables to represent `store.csv` and `device.csv`, respectively. These dimension tables are stored in the `SUMUP_REPORTING` database and the dim schema.
@@ -13,6 +13,8 @@
 11. I assumed that the product_sku column contains only numerical values. Therefore, I removed any alphabetical characters from that column.
 12. To determine how long it takes for a store to adopt our devices, I calculated the average time for a store to perform its first five transactions. I used the happened_at timestamp from the transaction table. The average time for a store to make its first transaction is 243 days, or approximately 8 months.
 13. Descriptions and tests for all columns are provided in the `fct.yml`, `dim.yml`, and `intermediate.yml` files.
+14. The dimension and fact tables are organized under various mart schemas in Snowflake. The schemas `MART_DEVICES`, `MART_PRODUCTS`, `MART_STORES`, and `MART_TRANSACTIONS` contain all dimension and fact tables related to devices, products, stores, and transactions, respectively.
+15. Images illustrating the DBT lineage and the Snowflake data structure can be found in the assets folder.
 
 
 # Tables to Answer Business Questions
