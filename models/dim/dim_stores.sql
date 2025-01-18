@@ -1,7 +1,7 @@
--- This table contains the information of the Stores belong to customers
+-- This table contains information about stores that belong to customers.
 {{ config(
-    schema='dim',
-    materialized='table')
+    schema="mart_stores",
+    materialized="table")
 }}
 
 with

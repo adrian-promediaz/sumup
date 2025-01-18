@@ -3,10 +3,10 @@
 -- Those transactions are made to pay for products sold inside the store, each product has a name and a SKU (stock keeping unit) which is unique."
 -- We materialize this object incrementally, as an incremental table is scalable enough to handle billions of records while keeping computing costs low.
 {{ config(
-       materialized='incremental',
-       schema='fact',
-       incremental_strategy='merge',
-       unique_key = 'id'
+       materialized="incremental",
+       schema="mart_transactions",
+       incremental_strategy="merge",
+       unique_key = "id"
    )
 }}
 

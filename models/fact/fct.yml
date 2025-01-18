@@ -48,7 +48,7 @@ models:
   - name: fct_avg_first_5_transaction_time_per_store
     description: "A fact table showing the average time for a store to perform its first 5 transactions."
 
-  - name: fct_avg_transaction_amount_per_typology_and_country
+  - name: fct_avg_transaction_amount_per_store_typology_and_country
     description: "A fact table showing the average transacted amount per store typology and country."
     columns:
       - name: store_country
